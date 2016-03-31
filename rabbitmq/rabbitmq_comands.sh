@@ -22,8 +22,9 @@ systemctl restart rabbitmq-server.service
 # http://server-name:15672/
 # http://server-name:15672/api #HTTP API
 # http://server-name:15672/cli #rabbitmqadmin
+# 可以使用默认用户名 guest / guest 登录
 # 提示
-# 默认guest账户只能从localhost登录，需先添加用户用赋予相应权限
+# 默认guest账户只能从localhost登录，需先添加用户用赋予相应权限 (验证错误, 可以使用guest远程登录)
 # 可通过配置rabbitmq.config改变rabbitmq-management plugin默认行为
 
 # 新增用户

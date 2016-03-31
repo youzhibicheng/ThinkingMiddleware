@@ -35,8 +35,11 @@ systemctl disable firewalld
 systemctl enable rabbitmq-server.service
 systemctl start rabbitmq-server.service
 
-# change password
+# change password, change to 'guest'
 rabbitmqctl change_password guest RABBIT_PASS
 
-# install pika
+# install python and related pip packages
+yum -y install python python-devel python-pip gcc
 pip install pika
+pip install kombu
+pip install paste pastedeploy webob eventlet

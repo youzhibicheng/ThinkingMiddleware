@@ -30,10 +30,10 @@ def on_request(ch, method, props, body):
     # 调用fib函数获得计算结果
     response = fib(n)
 
-    # exchage为空字符串则将message发送个到routing_key指定的queue
+    # exchange为空字符串则将message发送个到routing_key指定的queue
     # 这里queue为回调函数参数props中reply_to指定的queue
     # 要发送的message为计算所得的斐波那契数
-    # properties中correlation_id指定为回调函数参数props中co的rrelation_id
+    # properties中correlation_id指定为回调函数参数props中的correlation_id
     # 最后对消息进行确认
     ch.basic_publish(exchange='',
                      routing_key=props.reply_to,
@@ -41,13 +41,15 @@ def on_request(ch, method, props, body):
                      body=str(response))
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
+
+
 # 只有consumer已经处理并确认了上一条message时queue才分派新的message给它
 channel.basic_qos(prefetch_count=1)
 
 # 设置consumeer参数，即从哪个queue获取消息使用哪个函数进行处理，是否对消息进行确认
 channel.basic_consume(on_request, queue='rpc_queue')
 
-print " [x] Awaiting RPC requests"
+print " [x] Awaiting ex07_openstack requests"
 
 # 开始接收并处理消息
 channel.start_consuming()

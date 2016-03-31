@@ -5,7 +5,7 @@ import pika
 # 与RabbitMQ Server建立连接
 # 连接到的broker在本机-localhost上
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-        host='localhost'))
+        host='192.168.31.113'))
 channel = connection.channel()
 
 # 声明队列以向其发送消息消息

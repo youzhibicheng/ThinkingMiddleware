@@ -5,13 +5,14 @@ import pika
 # 建立到达RabbitMQ Server的connection
 # 此处RabbitMQ Server位于本机-localhost
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-        host='localhost'))
+        host='192.168.31.113'))
 channel = connection.channel()
 
 # 声明queue，确认要从中接收message的queue
 # queue_declare函数是幂等的，可运行多次，但只会创建一次
 # 若可以确信queue是已存在的，则此处可省略该声明，如producer已经生成了该queue
 # 但在producer和consumer中重复声明queue是一个好的习惯
+# 但是实际的情况确实，我在3.6.1的版本中, 这里如果再declare的话, 会报错
 channel.queue_declare(queue='hello')
 
 print ' [*] Waiting for messages. To exit press CTRL+C'

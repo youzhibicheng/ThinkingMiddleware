@@ -4,7 +4,7 @@ import pika
 import sys
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-        host='localhost'))
+        host='192.168.31.113'))
 channel = connection.channel()
 
 # 声明一个名为topic_logs的topic类型的exchange
