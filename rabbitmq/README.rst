@@ -1,4 +1,4 @@
-#-*-coding:utf8-*-
+#-*-coding:utf-8-*-
 # 安装
 installation_centos7.sh
 
